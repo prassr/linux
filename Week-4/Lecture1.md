@@ -2,7 +2,7 @@
 
 * Helps to switch between tasks while we are in the command line environment.
 
-## ♟ ` ps `
+### ♟ ` ps `
 
 ```
 SYNAPSIS:
@@ -16,9 +16,9 @@ SYNAPSIS:
 	2. the terminal associated with the process (tname=TTY)
 	3. the cumulated CPU time in [DD-]hh:mm:ss format (time=TIME)
 	4. the executable name (ucmd=CMD). 
-	- With options, other important columns include.
-	1. User id (UID)
-	2. Parent process ID (PPID)
+		- With options, other important columns include.
+			1. User id (UID)
+			2. Parent process ID (PPID)
 	 
 ```terminal
 ~$ ps
@@ -38,7 +38,7 @@ SYNAPSIS:
 | ` ps `      | ` auxw `| Wide listing sorted by percentage of CPU usage, %CPU |
 
 
-## ♟ ` sleep `
+### ♟ ` sleep `
 
 * Delay for a specified amount (` NUMBER `) of time.
 
@@ -55,7 +55,7 @@ SYNAPSIS:
 We will use ` sleep ` a simple process to demonstrate Linux process management.
 
 
-## ♟ ` & `
+### ♟ ` & `
 
 *  A process is run in the background.
 
@@ -70,7 +70,7 @@ We will use ` sleep ` a simple process to demonstrate Linux process management.
  
 * ` [1] ` denotes the command number that is pushed to background. Not to be confused with ` 5477 ` which is ` PID `
 
-## ♟ ` fg `
+### ♟ ` fg `
 
 * Bring a recent process running in the background to the foreground.
 
@@ -81,7 +81,7 @@ We will use ` sleep ` a simple process to demonstrate Linux process management.
 	sleep 30
 	```
 
-## ♟ ` jobs `
+### ♟ ` jobs `
 
 * List the processes running in the background by the user.
 
@@ -92,7 +92,7 @@ We will use ` sleep ` a simple process to demonstrate Linux process management.
 	[1]+  Running                 sleep 30 &
 	```
 
-## ♟ ` bg `
+### ♟ ` bg `
 
 ```
 SYNAPSIS:
@@ -115,20 +115,7 @@ bg
 bg %1
 ```
 
-
-## ♟ ` jobs `
-
-* List the processes running in the background by the user.
-
-	```terminal
-	~$ coproc sleep 30
-	[1] 5583
-	~$ jobs
-	[1]+  Running                 coproc COPROC sleep 30 &
-	```
-
-
-## ♟ ` kill `
+### ♟ ` kill `
 
 * Kill a command using it's process id.
 
@@ -145,12 +132,12 @@ bg %1
 	
 	```
 
-## ♟ ` pkill `
+### ♟ ` pkill `
 
 pass
 
 
-## ♟ ` top `
+### ♟ ` top `
 
 * Prints summary and live snapshots of processes running onto the screen.
 * It is in decreasing order of CPU utilization ` %CPU `.
@@ -163,9 +150,9 @@ pass
 
 # Disk Usage and System Monitoring
 
-## ♟ ` [free](../Week-3/Lecture1.md#-free) `
+### ♟ [`free`](../Week-3/Lecture1.md#-free)
 
-## ♟ ` uptime `
+### ♟ ` uptime `
 
 * It can be used to see the CPU uptime and number of users.
 
@@ -173,10 +160,11 @@ pass
 uptime
 ```
 
-## ♟ ` stat `
+### ♟ ` stat `
 
 * ` stat <file> ` - Shows statistics (file or file system status) on ` file `.
 * Typical output of ` stat ` for file ` znew `.
+
 ```terminal
 /usr/bin$ stat znew
   File: znew
@@ -188,15 +176,18 @@ Modify: 2022-09-05 15:33:59.000000000 +0200
 Change: 2022-11-03 19:51:25.078671510 +0200
  Birth: 2022-11-03 19:51:25.014673255 +0200
 ```
+
 * You can get the atomic output using ` -c ` option using ` FORMAT `.
 * For example, get textual and octal permissions on file ` znew `
+
 ```
 /usr/bin$ stat  -c "%a %A" znew
 755 -rwxr-xr-x
 ```
+
 * To know more visit the ` man ` pages.
 
-## ♟ ` du `
+### ♟ ` du `
 
 * ` du <file> ` - Estimate file space usage.
 * To see the disk usage of ` znew ` file.
@@ -210,18 +201,17 @@ Change: 2022-11-03 19:51:25.078671510 +0200
 
 * Try to figure out the difference between output by ` stat ` and ` du `. 
 
-## Roll of block size
-
-* A block is the smallest unit of memory in terms of which files are stores on the system.
-* Typical block size is 1K (1 Kibi byte).
-* For example, A file of size 3.5 K will require 4 blocks. 3 blocks for 3 K and 4th block to store 0.5 K. The remaining 0.5 K memory of block will be kept empty.
-
-
 ## ` df `
 
 * ` df [-h]` - shows filesystem information in format [human readable] below.
 
-```
+```terminal
     Filesystem   1K-blocks    Used Available Use% Mounted on
 ```
+
+### Roll of block size
+
+* A block is the smallest unit of memory in terms of which files are stores on the system.
+* Typical block size is 1K (1 Kibi byte).
+* For example, A file of size 3.5 K will require 4 blocks. 3 blocks for 3 K and 4th block to store 0.5 K. The remaining 0.5 K memory of block will be kept empty.
 
